@@ -1,0 +1,105 @@
+<form [formGroup]="form" (ngSubmit)="onFubmitForm()">
+  <div class="flex flex-col gap-1 max-w-[400px] mx-auto mt-10 px-4 min-[400px]:border rounded py-5">
+    <h1 class="font-semibold text-lg text-center">Sign Up Now</h1>
+    <div class="flex flex-col mt-4">
+      <label for="firstName">First name</label>
+      <input
+        class="shadow rounded px-3 py-2"
+        type="text"
+        placeholder="Enter First Name"
+        id="firstName"
+        formControlName="firstName"
+      />
+      @if (form.controls["firstName"].errors &&
+      form.controls["firstName"].touched) {
+      <span class="text-red-600"> First Name is required! </span>
+      }
+    </div>
+    <div class="flex flex-col">
+      <label for="lastName">Last Name</label>
+      <input
+        class="shadow rounded px-3 py-2"
+        type="text"
+        placeholder="Enter Last Name"
+        id="lastName"
+        formControlName="lastName"
+      />
+      @if (form.controls["lastName"].errors &&
+      form.controls["lastName"].touched) {
+      <span class="text-red-600"> Last Name is required! </span>
+      }
+    </div>
+    <div class="flex flex-col">
+      <label for="email">Email</label>
+      <input
+        class="shadow rounded px-3 py-2"
+        type="email"
+        placeholder="Enter Email Address"
+        id="email"
+        formControlName="email"
+      />
+      @if (form.controls["email"].errors && 
+        form.controls["email"].errors["email"] &&
+        form.controls["email"].touched) {
+      <span class="text-red-600"> Email is invalid! </span>
+      }
+      
+      @if (form.controls["email"].errors && 
+        form.controls["email"].errors["required"] &&
+        form.controls["email"].touched) {
+      <span class="text-red-600"> Email is required! </span>
+      }
+    </div>
+    <div class="flex flex-col">
+      <label for="phoneNumber">Phone Number</label>
+      <input
+        class="shadow rounded px-3 py-2"
+        type="text"
+        placeholder="Enter Phone Number"
+        id="phoneNumber"
+        formControlName="phoneNumber"
+      />
+      @if (form.controls["phoneNumber"].errors &&
+      form.controls["phoneNumber"].touched) {
+      <span class="text-red-600"> Phone Number is required! </span>
+      }
+    </div>
+    <div class="flex flex-col">
+      <label for="password">Password</label>
+      <input
+        class="shadow rounded px-3 py-2"
+        type="password"
+        placeholder="Enter Password"
+        id="password"
+        formControlName="password"
+      />
+      @if (form.controls["password"].errors && 
+        form.controls["password"].errors["required"] && 
+        form.controls["password"].touched) {
+      <span class="text-red-600"> Password is required! </span>
+      }
+
+      @if (form.controls["password"].errors && 
+        form.controls["password"].errors["minlength"] && 
+        form.controls["password"].touched) {
+      <span class="text-red-600"> Password must be at least 6 charactors! </span>
+      }
+
+      @if (validadorPassword) {
+      <span class="text-red-600">{{ validadorPassword }}</span>
+      }
+    </div>
+    <button
+      type="submit"
+      class="rounded bg-teal-600 text-slate-50 px-3 py-1 mt-4"
+    >
+      Sign up
+    </button>
+    <p class="text-center pt-2">
+      Already have have an account?
+      <a class="text-blue-600 font-medium" [routerLink]="['/account/login']"
+        >Sign In</a
+      >
+    </p>
+  </div>
+</form>

@@ -1,0 +1,51 @@
+<nav class="shadow shadow-gray-500 sticky px-4 py-2 bg-teal-600">
+  <div class="flex items-center justify-between">
+    <div class="flex items-center gap-6">
+      <a class="text-lg" [routerLink]="['/']">Mango</a>
+      <ul class="flex gap-3">
+        <li>
+          <a [routerLink]="['/']">Home</a>
+        </li>
+        <li class="dropdown">
+          <a
+            class="dropdown-toggle"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Content Management
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" routerLink="/admin/coupons">Coupons</a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/admin/products">Products</a>
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <ul class="flex gap-3">
+        @if(userName != null){
+        <li>
+          Hello
+          <a [routerLink]="['/account/user']"> {{ userName }}</a>
+        </li>
+        <li>
+          <a class="cursor-pointer" (click)="logout()">Logout</a>
+        </li>
+        } @else {
+        <li>
+          <a [routerLink]="['/account/login']">Login</a>
+        </li>
+        <li>
+          <a [routerLink]="['/account/register']">Register</a>
+        </li>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>

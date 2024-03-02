@@ -1,0 +1,58 @@
+<form [formGroup]="form" (ngSubmit)="onFubmitForm()">
+  <div class="flex flex-col gap-1 max-w-[400px] mx-auto mt-10 px-4 min-[400px]:border rounded py-5">
+    <h1 class="font-semibold text-lg text-center">Sign In Now</h1>
+    <div class="bg-red-600"></div>
+    <div class="flex flex-col mt-4">
+      <label for="userName">Username</label>
+      <input
+        class="shadow rounded px-3 py-2"
+        type="email"
+        placeholder="Enter Email Address"
+        id="userName"
+        formControlName="userName"
+      />
+      @if (form.controls["userName"].errors &&
+      form.controls["userName"].errors["email"] &&
+      form.controls["userName"].touched) {
+      <span class="text-red-600"> Email is invalid! </span>
+      } @if (form.controls["userName"].errors &&
+      form.controls["userName"].errors["required"] &&
+      form.controls["userName"].touched) {
+      <span class="text-red-600"> Email is required! </span>
+      }
+    </div>
+    <div class="flex flex-col">
+      <label for="password">Password</label>
+      <input
+        class="shadow rounded px-3 py-2"
+        type="password"
+        placeholder="Enter Password"
+        id="password"
+        formControlName="password"
+      />
+      @if (form.controls["password"].errors &&
+      form.controls["password"].errors["required"] &&
+      form.controls["password"].touched) {
+      <span class="text-red-600"> Password is required! </span>
+      } @if (form.controls["password"].errors &&
+      form.controls["password"].errors["minlength"] &&
+      form.controls["password"].touched) {
+      <span class="text-red-600">
+        Password must be at least 6 charactors!
+      </span>
+      }
+    </div>
+    <button
+      type="submit"
+      class="rounded bg-teal-600 text-slate-50 px-3 py-1 mt-4"
+    >
+      Sign in
+    </button>
+    <p class="text-center pt-2">
+      Don't have have an account?
+      <a class="text-blue-600 font-medium" [routerLink]="['/account/register']"
+        >Sign Up
+      </a>
+    </p>
+  </div>
+</form>

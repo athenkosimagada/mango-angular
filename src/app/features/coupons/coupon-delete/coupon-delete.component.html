@@ -1,0 +1,67 @@
+<div class="px-4 pt-4 max-w-[900px] mx-auto">
+    <div class="text-center bg-teal-600 p-2 rounded">
+      <h1 class="font-bold text-lg text-slate-50">Delete Coupon</h1>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="onFubmitForm()">
+      <div class="flex flex-col gap-1 pt-4">
+        <div class="flex flex-col">
+          <label for="couponCode">Coupon Code</label>
+          <input
+            class="shadow rounded px-3 py-2"
+            type="text"
+            placeholder="Enter Coupon Code"
+            id="couponCode"
+            [disabled]="true"
+            formControlName="couponCode"
+          />
+          @if (form.controls["couponCode"].errors &&
+          form.controls["couponCode"].touched) {
+          <span class="text-red-600"> Coupon Code is required! </span>
+          }
+        </div>
+        <div class="flex flex-col">
+          <label for="discountAmount">Discount Amount</label>
+          <input
+            class="shadow rounded px-3 py-2"
+            type="number"
+            placeholder="Enter Discount Amount"
+            id="discountAmount"
+            [disabled]="true"
+            formControlName="discountAmount"
+          />
+  
+          @if (form.controls["discountAmount"].errors &&
+          form.controls["discountAmount"].touched) {
+          <span class="text-red-600"> Discount Amount is required! </span>
+          }
+        </div>
+        <div class="flex flex-col">
+          <label for="minimumAmount">Minimum Amount</label>
+          <input
+            class="shadow rounded px-3 py-2"
+            type="number"
+            placeholder="Enter Minimum Amount"
+            id="minimumAmount"
+            formControlName="minAmount"
+          />
+  
+          @if (form.controls["minAmount"].errors &&
+          form.controls["minAmount"].touched) {
+          <span class="text-red-600"> Minimum Amount is required! </span>
+          }
+        </div>
+      </div>
+      <div class="flex gap-2 mt-4">
+        <button type="submit" class="rounded bg-red-600 text-slate-50 px-3 py-1">
+          Delete
+        </button>
+        <a
+          class="rounded font-semibold underline px-3 py-1"
+          [routerLink]="['/admin/coupons']"
+        >
+          Back to List
+        </a>
+      </div>
+    </form>
+  </div>
+  
