@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../services/auth/auth.service';
@@ -19,12 +19,11 @@ import { Router, RouterLink } from '@angular/router';
 export class LoginComponent implements OnInit {
   form!: FormGroup;
 
-
   constructor(
     private fb:FormBuilder,
-    private router: Router,
     private toastr: ToastrService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
     ) {
   }
 
@@ -48,17 +47,13 @@ export class LoginComponent implements OnInit {
     }
 
     this.authService.login(this.form.value).subscribe({
-      next: (res) => {
-        if(res.isSuccess){
-          console.log(res);
-          localStorage.setItem("userName",res.result.user.email);
-          this.toastr.success('Logged in successfully');
-          this.router.navigateByUrl("/");
-        }
+      next: (response) => {
+        this.toastr.success("Logged in successful");
+        this.router.navigate(["/"]);
       },
-      error: err => {
-        this.toastr.error(err.error.message, 'Error');
+      error: (error) => {
+        this.toastr.error(error.error.message);
       }
-    });
+    })
   }
 }

@@ -4,7 +4,6 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../services/auth/auth.service';
-import { ApiResponse } from '../../../models/response';
 
 @Component({
   selector: 'app-register',
@@ -54,21 +53,26 @@ export class RegisterComponent {
     }
 
     this.authService.register(this.form.value).subscribe({
-      next: (res) => {
-        if(res.isSuccess){
-          this.authService.asignRole(this.form.value).subscribe();
-          this.toastr.success('Registered successfully');
-          this.router.navigateByUrl("/account/login");
+      next: (response) => {
+
+        if(response.isSuccess){
+          this.authService.assignRole(this.form.value).subscribe({
+            next: (response) => {
+              this.toastr.success("Registered successful");
+              this.router.navigate(["account/login"]);
+            },
+            error: (error) => {
+              this.toastr.error(error.error.message);
+            }
+          });
+        } else{
+          this.toastr.error(response.message);
         }
+        
       },
-      error: err => {
-        if(err.error.message.includes("Password")){
-          this.validadorPassword = err.error.message;
-          return;
-        }
-        this.validadorPassword = "";
-        this.toastr.error(err.error.message);
+      error: (error) => {
+        this.toastr.error(error.error.message);
       }
-    });
+    })
   }
 }

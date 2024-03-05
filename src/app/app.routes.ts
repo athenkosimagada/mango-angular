@@ -6,6 +6,7 @@ import { CouponDeleteComponent } from './features/coupons/coupon-delete/coupon-d
 import { RegisterComponent } from './features/auth/register/register.component';
 import { LoginComponent } from './features/auth/login/login.component';
 import { ProductsComponent } from './features/products/products.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
     {
@@ -14,23 +15,28 @@ export const routes: Routes = [
     },
     {
         path: "admin/coupons",
-        component: CouponsComponent
+        component: CouponsComponent,
+        canActivate:[authGuard]
     },
     {
         path: "admin/coupons/upsert/:id",
-        component: CouponFormComponent
+        component: CouponFormComponent,
+        canActivate:[authGuard]
     },
     {
         path: "admin/coupons/upsert",
-        component: CouponFormComponent
+        component: CouponFormComponent,
+        canActivate:[authGuard]
     },
     {
         path: "admin/coupons/delete/:id",
-        component: CouponDeleteComponent
+        component: CouponDeleteComponent,
+        canActivate:[authGuard]
     },
     {
         path: "admin/products",
-        component: ProductsComponent
+        component: ProductsComponent,
+        canActivate:[authGuard]
     },
     {
         path: "account/register",

@@ -66,7 +66,12 @@ export class CouponDeleteComponent {
         this.router.navigateByUrl("/admin/coupons");
       },
       error: err => {
-        console.error(err);
+        console.log(err)
+        if(err.status == 403) {
+          this.toastr.error("Access denied");
+        } else {
+          this.toastr.error(err.message);
+        }
       }
     })
   }

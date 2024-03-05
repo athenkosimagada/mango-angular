@@ -20,14 +20,6 @@ export class HomeComponent {
   }
 
   ngOnInit(): void {
-    this.productService.fetchProducts().subscribe(
-      (products: Product[]) => {
-        console.log('Fetched Coupons:', products); // Log fetched coupons
-        this.products = products; // Assign fetched coupons to property
-      },
-      (error) => {
-        console.error('Error fetching coupons:', error);
-      }
-    );
+    
   }
 }
