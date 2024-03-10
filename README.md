@@ -1,27 +1,19 @@
-# Mango
+# Empowering Frontend with Angular & .NET Core APIs
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
+In my project, I leverage Angular to seamlessly integrate with my .NET Core APIs, creating a robust frontend experience. Through this integration, users can register and sign in via my APIs, granting them access to specific application features based on their assigned roles.
 
-## Development server
+## Secure Authentication & Authorization
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+With my authentication system, users' login status is tracked across the application, enabling role-based access control. I achieve this by parsing headers using interceptors to extract stored tokens from local storage. This ensures that users are directed to the appropriate parts of the application based on their permissions.
 
-## Code scaffolding
+## Enhanced User Experience with Tailwind CSS
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+To elevate the user experience, I've incorporated Tailwind CSS, a utility-first CSS framework. This allows me to rapidly style components and create visually appealing interfaces. Additionally, I've implemented reactive forms in Angular to handle user input, ensuring seamless form validation and error handling.
 
-## Build
+## Robust Error Handling & UX Optimization
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+When interacting with APIs, I prioritize error handling to maintain a smooth user experience. By anticipating and addressing potential errors, I mitigate disruptions to the user flow. Through thoughtful design and implementation, I aim to provide users with a seamless and intuitive application experience.
 
-## Running unit tests
+## Continual Improvement & Innovation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+I'm committed to continually enhancing my frontend capabilities by exploring new technologies and best practices. My goal is to deliver innovative solutions that prioritize user satisfaction and usability. With a focus on optimization and refinement, I strive to push the boundaries of frontend development and deliver exceptional results.
