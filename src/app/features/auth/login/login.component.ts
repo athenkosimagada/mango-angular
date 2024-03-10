@@ -4,6 +4,9 @@ import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } 
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../../services/auth/auth.service';
 import { Router, RouterLink } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-login',
@@ -12,6 +15,9 @@ import { Router, RouterLink } from '@angular/router';
     CommonModule,
     RouterLink,
     ReactiveFormsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatIconModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'

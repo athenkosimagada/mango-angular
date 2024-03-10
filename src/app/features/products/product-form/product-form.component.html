@@ -1,0 +1,101 @@
+<div class="px-4 pt-4 max-w-[900px] mx-auto">
+    <div class="text-center bg-teal-600 p-2 rounded">
+      <h1 class="font-bold text-lg text-slate-50">{{ isEdit ? "Edit Coupon" : "Create Coupon"}}</h1>
+    </div>
+  
+    <form [formGroup]="form" (ngSubmit)="onFubmitForm()">
+      <div class="flex flex-col gap-1 pt-4">
+        <div class="flex flex-col">
+          <label for="name">Name</label>
+          <input
+            class="shadow rounded px-3 py-2"
+            type="text"
+            placeholder="Enter Product Name"
+            id="name"
+            formControlName="name"
+          />
+          @if (form.controls["name"].errors &&
+          form.controls["name"].touched) {
+          <span class="text-red-600"> Name is required! </span>
+          }
+        </div>
+        <div class="flex flex-col">
+          <label for="price">Price</label>
+          <input
+            class="shadow rounded px-3 py-2"
+            type="number"
+            placeholder="Enter Price"
+            id="price"
+            formControlName="price"
+            mask="0*"
+            />
+  
+          @if (form.controls["price"].errors &&
+          form.controls["price"].touched) {
+          <span class="text-red-600">Price is required! </span>
+          }
+        </div>
+        <div class="flex flex-col">
+          <label for="description">Description</label>
+          <textarea
+            class="shadow rounded px-3 py-2"
+            type="text"
+            rows="5"
+            placeholder="Enter Description"
+            id="description"
+            formControlName="description"
+            mask="0*"
+          ></textarea>
+  
+          @if (form.controls["description"].errors &&
+          form.controls["description"].touched) {
+          <span class="text-red-600"> Description is required! </span>
+          }
+        </div>
+        <div class="flex flex-col">
+            <label for="categoryName">Category Name</label>
+            <input
+              class="shadow rounded px-3 py-2"
+              type="text"
+              placeholder="Enter Category Name"
+              id="categoryName"
+              formControlName="categoryName"
+              mask="0*"
+              />
+    
+            @if (form.controls["categoryName"].errors &&
+            form.controls["categoryName"].touched) {
+            <span class="text-red-600">Category Name is required! </span>
+            }
+          </div>
+          <div class="flex flex-col">
+            <label for="imageUrl">ImageUrl</label>
+            <input
+              class="shadow rounded px-3 py-2"
+              type="text"
+              placeholder="Enter ImageUrl"
+              id="imageUrl"
+              formControlName="imageUrl"
+              mask="0*"
+              />
+    
+            @if (form.controls["imageUrl"].errors &&
+            form.controls["imageUrl"].touched) {
+            <span class="text-red-600">ImageUrl is required! </span>
+            }
+          </div>
+      </div>
+      <div class="flex gap-2 mt-4">
+        <button type="submit" class="rounded bg-teal-600 text-slate-50 px-3 py-1">
+          {{ isEdit ? "Edit" : "Create"}}
+        </button>
+        <a
+          class="rounded font-semibold underline px-3 py-1"
+          [routerLink]="['/admin/products']"
+        >
+          Back to List
+        </a>
+      </div>
+    </form>
+  </div>
+  

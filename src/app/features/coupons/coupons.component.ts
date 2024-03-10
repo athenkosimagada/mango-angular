@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterLinkActive } from '@angular/router';
 import { Coupon } from '../../models/coupon';
 import { CouponsService } from '../../services/coupon/coupons.service';
 
@@ -18,19 +18,13 @@ import { CouponsService } from '../../services/coupon/coupons.service';
 export class CouponsComponent implements OnInit {
   coupons: Coupon[] = [];
 
-  constructor(private couponService: CouponsService) {
+  constructor(
+    private activatedRoute: ActivatedRoute
+  ) {
 
   }
 
   ngOnInit(): void {
-    this.couponService.fetchCoupons().subscribe(
-      (coupons: Coupon[]) => {
-        console.log('Fetched Coupons:', coupons); // Log fetched coupons
-        this.coupons = coupons; // Assign fetched coupons to property
-      },
-      (error) => {
-        console.error('Error fetching coupons:', error);
-      }
-    );
+    this.coupons = this.activatedRoute.snapshot.data['coupons'];
   }
 }

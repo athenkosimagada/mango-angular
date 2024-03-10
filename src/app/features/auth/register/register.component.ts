@@ -75,4 +75,15 @@ export class RegisterComponent {
       }
     })
   }
+
+  canExit() {
+    if(this.form.get(["firstName"])?.value != null ||
+        this.form.get(["lastName"])?.value != null ||
+        this.form.get(["email"])?.value != null ||
+        this.form.get(["phoneNumber"])?.value != null 
+    ) {
+      return confirm(`You have unsaved changes. Do you want to navigate away?`)
+    } 
+    return true;
+  }
 }
